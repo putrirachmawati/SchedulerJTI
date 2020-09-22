@@ -1,37 +1,68 @@
-  <!-- jQuery -->
-  <script src="<?= Base_url('assets/AdminLTE/plugins/jquery/jquery.min.js'); ?>"></script>
-  <!-- jQuery UI 1.11.4 -->
-  <script src="<?= Base_url('assets/AdminLTE/plugins/jquery-ui/jquery-ui.min.js'); ?>"></script>
-  <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+  <!-- Footer -->
+  <footer class="sticky-footer bg-white">
+    <div class="container my-auto">
+      <div class="copyright text-center my-auto">
+        <span>Copyright &copy; Your Website <?= date('Y'); ?></span>
+      </div>
+    </div>
+  </footer>
+  <!-- End of Footer -->
+
+  </div>
+  <!-- End of Content Wrapper -->
+
+  </div>
+  <!-- End of Page Wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Select "Logout" below if you are ready to logout.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-primary" href="<?= base_url('Auth/logout'); ?>">Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="<?= base_url('assets/sb-admin/'); ?>vendor/jquery/jquery.min.js"></script>
+  <script src="<?= base_url('assets/sb-admin/'); ?>vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="<?= base_url('assets/sb-admin/'); ?>vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="<?= base_url('assets/sb-admin/'); ?>js/sb-admin-2.min.js"></script>
+
+  <!-- Page level plugins -->
+  <script src="<?= base_url('assets/sb-admin/'); ?>vendor/chart.js/Chart.min.js"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="<?= base_url('assets/sb-admin/'); ?>js/demo/chart-area-demo.js"></script>
+  <script src="<?= base_url('assets/sb-admin/'); ?>js/demo/chart-pie-demo.js"></script>
+
+  <!-- Custom Script -->
   <script>
-      $.widget.bridge('uibutton', $.ui.button)
+    $('.custom-file-input').on('change', function() {
+      let fileName = $(this).val().split('\\').pop();
+      $(this).next('.custom-file-label').addClass("selected").html(fileName);
+    });
   </script>
-  <!-- Bootstrap 4 -->
-  <script src="<?= Base_url('assets/AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js'); ?>"></script>
-  <!-- ChartJS -->
-  <script src="<?= Base_url('assets/AdminLTE/plugins/chart.js/Chart.min.js'); ?>"></script>
-  <!-- Sparkline -->
-  <script src="<?= Base_url('assets/AdminLTE/plugins/sparklines/sparkline.js'); ?>"></script>
-  <!-- JQVMap -->
-  <script src="<?= Base_url('assets/AdminLTE/plugins/jqvmap/jquery.vmap.min.js'); ?>"></script>
-  <script src="<?= Base_url('assets/AdminLTE/plugins/jqvmap/maps/jquery.vmap.usa.js'); ?>"></script>
-  <!-- jQuery Knob Chart -->
-  <script src="<?= Base_url('assets/AdminLTE/plugins/jquery-knob/jquery.knob.min.js'); ?>"></script>
-  <!-- daterangepicker -->
-  <script src="<?= Base_url('assets/AdminLTE/plugins/moment/moment.min.js'); ?>"></script>
-  <script src="<?= Base_url('assets/AdminLTE/plugins/daterangepicker/daterangepicker.js'); ?>"></script>
-  <!-- Tempusdominus Bootstrap 4 -->
-  <script src="<?= Base_url('assets/AdminLTE/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js'); ?>"></script>
-  <!-- Summernote -->
-  <script src="<?= Base_url('assets/AdminLTE/plugins/summernote/summernote-bs4.min.js'); ?>"></script>
-  <!-- overlayScrollbars -->
-  <script src="<?= Base_url('assets/AdminLTE/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js'); ?>"></script>
-  <!-- AdminLTE App -->
-  <script src="<?= Base_url('assets/AdminLTE/dist/js/adminlte.js'); ?>"></script>
-  <!-- AdminLTE for demo purposes -->
-  <script src="<?= Base_url('assets/AdminLTE/dist/js/demo.js'); ?>"></script>
-  <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-  <script src="<?= Base_url('assets/AdminLTE/dist/js/pages/dashboard.js'); ?>"></script>
+
   </body>
 
   </html>

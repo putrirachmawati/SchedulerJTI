@@ -64,7 +64,7 @@
       </form>
 
       <div class="text-center">
-        <a href="#">I already have a membership</a>
+        <a href="<?= base_url('Auth'); ?>">I already have an account</a>
       </div>
     </div>
     <!-- /.form-box -->
