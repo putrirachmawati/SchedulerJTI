@@ -14,8 +14,8 @@
 
     <!-- Dashboard -->
     <!-- Nav Item - Dashboard -->
-    <?php $tt = 'Dashboard' ?>
-    <?php if ($title == $tt) : ?>
+
+    <?php if ($title == 'Dashboard') : ?>
         <li class="nav-item active">
         <?php else : ?>
         <li class="nav-item">
@@ -54,41 +54,39 @@
 
         <!-- Nav Item - Pages Collapse Menu -->
         <!-- Dosen -->
-        <?php $tt = 'Dosen' ?>
-        <?php if ($title == $tt) : ?>
+        <?php if ($title == 'Data Dosen') : ?>
             <li class="nav-item active">
             <?php else : ?>
             <li class="nav-item">
             <?php endif; ?>
 
 
-            <a class="nav-link" href="<?= base_url('Admin'); ?>">
+            <a class="nav-link" href="<?= base_url('Admin/data_dosen'); ?>">
                 <i class="fas fa-fw fa-user-tie"></i>
                 <span>Dosen</span></a>
             </li>
 
             <!-- Mata Kuliah -->
-            <?php $tt = 'Mata Kuliah' ?>
-            <?php if ($title == $tt) : ?>
+            <?php if ($title == 'Data Mata Kuliah') : ?>
                 <li class="nav-item active">
                 <?php else : ?>
                 <li class="nav-item">
                 <?php endif; ?>
 
-                <a class="nav-link" href="<?= base_url('Admin'); ?>">
+                <a class="nav-link" href="<?= base_url('Admin/data_mata_kuliah'); ?>">
                     <i class="fas fa-fw fa-book"></i>
                     <span>Mata Kuliah</span></a>
                 </li>
 
                 <!-- Ruang -->
                 <?php $tt = 'Ruang' ?>
-                <?php if ($title == $tt) : ?>
+                <?php if ($title == 'Data Ruang') : ?>
                     <li class="nav-item active">
                     <?php else : ?>
                     <li class="nav-item">
                     <?php endif; ?>
 
-                    <a class="nav-link" href="<?= base_url('Admin'); ?>">
+                    <a class="nav-link" href="<?= base_url('Admin/data_ruang'); ?>">
                         <i class="fas fa-fw fa-hotel"></i>
                         <span>Ruang</span></a>
                     </li>

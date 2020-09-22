@@ -24,7 +24,7 @@ class Admin extends CI_Controller
         $this->load->view('templates/footer');
     }
 
-    //jajal
+    //Halaman Profil
     public function profile()
     {
         $data['title'] = 'Profile';
@@ -55,7 +55,7 @@ class Admin extends CI_Controller
             //upload if there is an image
             $upload_image = $_FILES['image']['name'];
             if ($upload_image) {
-                $config['allowed_types'] = 'jpg|png';
+                $config['allowed_types'] = 'gif|jpg|png';
                 $config['max_size'] = '2048';
                 $config['upload_path'] = './assets/img/profile';
 
@@ -64,12 +64,13 @@ class Admin extends CI_Controller
                 if ($this->upload->do_upload('image')) {
                     $old_image = $data['user']['image'];
                     if ($old_image != 'default.png') {
-                        unlink('FCPATH' . 'assets/img/profile/' . $old_image);
+                        unlink(FCPATH . 'assets/img/profile/' . $old_image);
                     }
                     $new_image = $this->upload->data('file_name');
                     $this->db->set('image', $new_image);
                 } else {
-                    echo $this->upload->display_errors();
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger ml-1" role="alert">' . 'Format foto hanya untuk jpg, png, dan svg. Ukuran foto maksimal 2mb' . '</div>');
+                    redirect('Admin/profile');
                 }
             }
 
@@ -80,5 +81,41 @@ class Admin extends CI_Controller
             $this->session->set_flashdata('message', '<div class="alert alert-success text-center" role="alert">Your profile has been updated</div>');
             redirect('Admin/profile');
         }
+    }
+
+    // Halaman Data Dosen
+    public function data_dosen()
+    {
+        $data['title'] = 'Data Dosen';
+        $data['user'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('v_data_dosen', $data);
+        $this->load->view('templates/footer');
+    }
+
+    // Halaman Mata Kuliah
+    public function data_mata_kuliah()
+    {
+        $data['title'] = 'Data Mata Kuliah';
+        $data['user'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('v_data_mata_kuliah', $data);
+        $this->load->view('templates/footer');
+    }
+
+    // Halaman Ruang
+    public function data_ruang()
+    {
+        $data['title'] = 'Data Ruang';
+        $data['user'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('v_data_ruang', $data);
+        $this->load->view('templates/footer');
     }
 }
