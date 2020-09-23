@@ -34,7 +34,7 @@
                         <div class="col-sm-3">
                             <img src="<?= base_url('assets/img/profile/') . $user['image']; ?>" class="img-thumbnail">
                         </div>
-                        <div class="col-sm-9">
+                        <div class=" col-sm-9">
                             <div class="custom-file">
                                 <input type="file" class="custom-file-input" id="image" name="image">
                                 <label class="custom-file-label" for="image">Choose file</label>
@@ -46,11 +46,9 @@
 
             <div class="form-group row justify-content-end">
                 <div class="col-sm-10">
-                    <button type="submit" class="btn btn-primary">Edit</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
                 </div>
             </div>
-
-
 
 
             </form>

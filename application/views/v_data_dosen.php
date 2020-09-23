@@ -8,7 +8,10 @@
 
         <div class="row">
             <div class="col-lg-3 mb-3">
-                <button class="btn btn-success">Add Data</button>
+                <button class="btn btn-success">
+                    <i class="fas fa-fw fa-plus"></i>
+                    Add Data
+                </button>
             </div>
         </div>
         <table class="table">

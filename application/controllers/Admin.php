@@ -55,9 +55,10 @@ class Admin extends CI_Controller
             //upload if there is an image
             $upload_image = $_FILES['image']['name'];
             if ($upload_image) {
-                $config['allowed_types'] = 'gif|jpg|png';
-                $config['max_size'] = '2048';
                 $config['upload_path'] = './assets/img/profile';
+                $config['allowed_types'] = 'gif|jpg|png|jpeg';
+                $config['max_size'] = 2048;
+                $config['encrypt_name'] = true;
 
                 $this->load->library('upload', $config);
 
@@ -69,7 +70,7 @@ class Admin extends CI_Controller
                     $new_image = $this->upload->data('file_name');
                     $this->db->set('image', $new_image);
                 } else {
-                    $this->session->set_flashdata('message', '<div class="alert alert-danger ml-1" role="alert">' . 'Format foto hanya untuk jpg, png, dan svg. Ukuran foto maksimal 2mb' . '</div>');
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">' . $this->upload->display_errors() . '</div>');
                     redirect('Admin/profile');
                 }
             }
