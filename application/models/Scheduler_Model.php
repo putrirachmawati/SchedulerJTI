@@ -2,7 +2,7 @@
 
 class Scheduler_Model extends CI_Model
 {
-    //Tabel Dosen
+
     public function getAllDosen()
     {
         return $this->db->get('tb_dosen')->result_array();

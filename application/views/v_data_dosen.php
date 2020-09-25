@@ -14,7 +14,7 @@
       </div>
     </div>
 
-    <!-- Sukses Tambah Data -->
+    <!-- Notif (Sukses insert data, edit data, delete data) -->
     <?= $this->session->flashdata('message'); ?>
 
     <!-- Modal Insert -->
@@ -27,9 +27,10 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <?php echo form_open_multipart('Admin/data_dosen'); ?>
+
+          <!-- Form -->
+          <?php echo form_open_multipart('Dosen'); ?>
           <div class="modal-body">
-            <!-- Form -->
             <div class="form-group">
               <label for="exampleFormControlInput1">Nama Dosen</label>
               <input type="text" class="form-control" class="form-control" id="nama_dosen" name="nama_dosen" value="<?= set_value('nama_dosen'); ?>" required oninvalid="this.setCustomValidity('data tidak boleh kosong')" oninput="setCustomValidity('')">
@@ -45,6 +46,7 @@
             <button type="submit" class="btn btn-primary">Save changes</button>
           </div>
           </form>
+
         </div>
       </div>
     </div>
@@ -88,7 +90,7 @@
                     </div>
 
                     <div class="modal-body">
-                      <form action="<?= base_url('Admin/edit_dosen/'); ?><?= $tb['id_dosen']; ?>" method="post">
+                      <form action="<?= base_url('Dosen/edit_dosen/'); ?><?= $tb['id_dosen']; ?>" method="post">
                         <!-- Form -->
                         <div class="form-group">
                           <label for="exampleFormControlInput2">ID Dosen</label>
@@ -96,12 +98,12 @@
 
                           <div class="form-group">
                             <label for="exampleFormControlInput2">Nama Dosen</label>
-                            <input type="text" class="form-control" class="form-control" id="nama_dosen" name="nama_dosen" required oninvalid="this.setCustomValidity('data tidak boleh kosong')" oninput="setCustomValidity('')">
+                            <input type="text" class="form-control" class="form-control" id="nama_dosen" name="nama_dosen" value="<?= $tb['nama_dosen']; ?>" required oninvalid="this.setCustomValidity('data tidak boleh kosong')" oninput="setCustomValidity('')">
 
                           </div>
                           <div class="form-group">
                             <label for="exampleFormControlInput2">NIP</label>
-                            <input type="text" class="form-control" class="form-control" id="nip" name="nip" required oninvalid="this.setCustomValidity('data tidak boleh kosong')" oninput="setCustomValidity('')">
+                            <input type="text" class="form-control" class="form-control" id="nip" name="nip" value="<?= $tb['nip']; ?>" required oninvalid="this.setCustomValidity('data tidak boleh kosong')" oninput="setCustomValidity('')">
                           </div>
                         </div>
                         <div class="modal-footer">
@@ -116,7 +118,7 @@
               <!-- Akhir Modal Edit -->
 
               <!-- Delete -->
-              <a href="<?= base_url('Admin/delete_dosen/'); ?><?= $tb['id_dosen']; ?>" class="badge badge-danger" onclick="return confirm('Your data will be delete. Are you sure to continue?');">delete</a>
+              <a href="<?= base_url('Dosen/delete_dosen/'); ?><?= $tb['id_dosen']; ?>" class="badge badge-danger" onclick="return confirm('Your data will be delete. Are you sure to continue?');">delete</a>
 
             </td>
           </tr>

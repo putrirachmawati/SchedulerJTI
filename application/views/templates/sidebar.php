@@ -2,7 +2,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('Admin'); ?>">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('Dashboard'); ?>">
         <div class="sidebar-brand-icon">
             <i class="fab fa-slack"></i>
         </div>
@@ -21,7 +21,7 @@
         <li class="nav-item">
         <?php endif; ?>
 
-        <a class="nav-link" href="<?= base_url('Admin'); ?>">
+        <a class="nav-link" href="<?= base_url('Dashboard'); ?>">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
         </li>
@@ -61,7 +61,7 @@
             <?php endif; ?>
 
 
-            <a class="nav-link" href="<?= base_url('Admin/data_dosen'); ?>">
+            <a class="nav-link" href="<?= base_url('Dosen'); ?>">
                 <i class="fas fa-fw fa-user-tie"></i>
                 <span>Dosen</span></a>
             </li>
@@ -73,7 +73,7 @@
                 <li class="nav-item">
                 <?php endif; ?>
 
-                <a class="nav-link" href="<?= base_url('Admin/data_mata_kuliah'); ?>">
+                <a class="nav-link" href="<?= base_url('MataKuliah'); ?>">
                     <i class="fas fa-fw fa-book"></i>
                     <span>Mata Kuliah</span></a>
                 </li>
@@ -86,7 +86,7 @@
                     <li class="nav-item">
                     <?php endif; ?>
 
-                    <a class="nav-link" href="<?= base_url('Admin/data_ruang'); ?>">
+                    <a class="nav-link" href="<?= base_url('Ruang'); ?>">
                         <i class="fas fa-fw fa-hotel"></i>
                         <span>Ruang</span></a>
                     </li>

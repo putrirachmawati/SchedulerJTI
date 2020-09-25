@@ -3,24 +3,21 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Auth extends CI_Controller
 {
-    public function __construct()
-    {
-        parent::__construct();
-        $this->load->library('form_validation');
-    }
 
     public function index()
     {
         //Rules
         $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
         $this->form_validation->set_rules('password', 'Password', 'required|trim');
+
         if ($this->form_validation->run() == false) {
+            //form_validasi gagal
             $data['title'] = 'Login';
             $this->load->view('templates/auth_header', $data);
             $this->load->view('v_auth/v_login');
             $this->load->view('templates/auth_footer');
         } else {
-            //validasi berhasil
+            //form_validasi berhasil
             $this->_login();
         }
     }
@@ -34,17 +31,20 @@ class Auth extends CI_Controller
         $user = $this->db->get_where('tb_user', ['email' => $email])->row_array();
         $pass = $this->db->get_where('tb_user', ['password' => $password])->row_array();
 
+        //cek user
         if ($user) {
             //usernya ada
             if ($user['is_active'] == 1) {
-                //sudak aktifsi
-
+                //sudak aktifasi
+                //...
                 //cek password
                 if ($pass) {
-                    //password benar
+                    //password benar(login success)
                     $data = ['email' => $user['email']];
+
+                    //buat session
                     $this->session->set_userdata($data);
-                    redirect('Admin');
+                    redirect('Dashboard');
                 } else {
                     // password salah
                     $this->session->set_flashdata('message', '<div class="alert alert-danger text-center" role="alert">Wrong Password!</div>');
@@ -52,6 +52,7 @@ class Auth extends CI_Controller
                 }
             } else {
                 //belum aktifasi
+                //..
             }
         } else {
             //user tidak ada

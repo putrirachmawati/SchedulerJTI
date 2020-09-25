@@ -8,7 +8,7 @@
 
         <div class="col-lg-8">
 
-            <?php echo form_open_multipart('Admin/edit_profile'); ?>
+            <?php echo form_open_multipart('Profile/edit_profile'); ?>
             <!-- email -->
             <div class="form-group row">
                 <label for="email" class="col-sm-2 col-form-label">Email</label>
