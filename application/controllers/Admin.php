@@ -6,11 +6,11 @@ class Admin extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-
         $this->load->library('form_validation');
         if (!$this->session->userdata('email')) {
             redirect('Auth/access_blocked');
         }
+        $this->load->model('Scheduler_Model');
     }
     public function index()
     {
@@ -87,13 +87,59 @@ class Admin extends CI_Controller
     // Halaman Data Dosen
     public function data_dosen()
     {
-        $data['title'] = 'Data Dosen';
-        $data['user'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/sidebar', $data);
-        $this->load->view('templates/topbar', $data);
-        $this->load->view('v_data_dosen', $data);
-        $this->load->view('templates/footer');
+        //Rules
+        $this->form_validation->set_rules('nama_dosen', 'Nama Dosen', 'required|trim');
+        $this->form_validation->set_rules('nip', 'NIP', 'required|trim');
+
+        if ($this->form_validation->run() == False) {
+            $data['title'] = 'Data Dosen';
+            $data['user'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
+
+            //model get dosen
+            $data['dosen'] = $this->Scheduler_Model->getAllDosen();
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('v_data_dosen', $data);
+            $this->load->view('templates/footer');
+        } else {
+
+            //model insert dosen
+            $this->Scheduler_Model->insertDosen();
+
+            // Notif Sukses
+            $this->session->set_flashdata('message', '<div class="alert alert-success text-center" role="alert">Data Dosen telah ditambahkan..</div>');
+            redirect('Admin/data_dosen');
+        }
+    }
+
+    public function edit_dosen($id_dosen)
+    {
+        //Rules
+        $this->form_validation->set_rules('nama_dosen', 'Nama Dosen', 'required|trim');
+        $this->form_validation->set_rules('nip', 'NIP', 'required|trim');
+
+        if ($this->form_validation->run() == False) {
+
+            //notif gagal
+            $this->session->set_flashdata('message', '<div class="alert alert-danger text-center" role="alert">Data Dosen gagal diupdate..</div>');
+            redirect('Admin/data_dosen');
+        } else {
+
+            //model edit dosen
+            $this->Scheduler_Model->editDosen($id_dosen);
+
+            // Notif Sukses
+            $this->session->set_flashdata('message', '<div class="alert alert-success text-center" role="alert">Data Dosen telah diupdate..</div>');
+            redirect('Admin/data_dosen');
+        }
+    }
+
+    public function delete_dosen($id_dosen)
+    {
+        $this->session->set_flashdata('message', '<div class="alert alert-success text-center" role="alert">Data dosen berhasil dihapus..</div>');
+        $this->Scheduler_Model->deleteDosen($id_dosen);
+        redirect('Admin/data_dosen');
     }
 
     // Halaman Mata Kuliah
