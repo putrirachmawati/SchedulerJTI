@@ -23,7 +23,8 @@ class Dosen extends CI_Controller
         $this->form_validation->set_rules('nip', 'NIP', 'required|trim');
 
         if ($this->form_validation->run() == False) {
-            //notif gagal form belum...
+            //form validasi gagal
+            //notif gagal form belum...!
             $data['title'] = 'Data Dosen';
 
             //ambil data session login
@@ -38,6 +39,7 @@ class Dosen extends CI_Controller
             $this->load->view('v_data_dosen', $data);
             $this->load->view('templates/footer');
         } else {
+            //form validasi sukses
             //model insert dosen
             $this->Scheduler_Model->insertDosen();
 

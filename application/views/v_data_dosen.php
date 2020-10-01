@@ -56,7 +56,7 @@
       <thead class="thead-light">
         <tr>
           <th scope="col">No</th>
-          <th scope="col">ID Dosen</th>
+          <th scope="col">Id Dosen</th>
           <th scope="col">Nama Dosen</th>
           <th scope="col">NIP</th>
           <th scope="col"></th>
