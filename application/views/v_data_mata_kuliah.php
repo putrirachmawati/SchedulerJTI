@@ -130,7 +130,7 @@
                                        <input type="text" class="form-control" class="form-control" id="id_mata_kuliah" name="id_mata_kuliah" placeholder="<?= $tb['id_mata_kuliah']; ?>" readonly>
                                     </div>
                                     <div class="form-group">
-                                       <label for="exampleFormControlSelect1">Prodi</label>
+                                       <label for="exampleFormControlSelect2">Prodi</label>
                                        <select class="form-control" name="id_prodi" id="id_prodi" required oninvalid="this.setCustomValidity('data tidak boleh kosong')" oninput="setCustomValidity('')">
                                           <option value="">--- No Selected ---</option>
                                           <?php foreach ($prodi as $row) : ?>
@@ -149,7 +149,7 @@
                                        <input type="text" class="form-control" class="form-control" id="nama_mata_kuliah" name="nama_mata_kuliah" value="<?= $tb['nama_mata_kuliah']; ?>" required oninvalid="this.setCustomValidity('data tidak boleh kosong')" oninput="setCustomValidity('')">
                                     </div>
                                     <div class="form-group">
-                                       <label for="exampleFormControlSelect1">Semester</label>
+                                       <label for="exampleFormControlSelect2">Semester</label>
                                        <select class="form-control" id="semester" name="semester" required oninvalid="this.setCustomValidity('data tidak boleh kosong')" oninput="setCustomValidity('')">
                                           <option value="">--- No Selected ---</option>
                                           <option <?php if ($tb['semester'] == 'Semester 1') : ?> selected="selected" <?php endif; ?>>Semester 1</option>
@@ -161,7 +161,7 @@
                                        </select>
                                     </div>
                                     <div class="form-group">
-                                       <label for="exampleFormControlSelect1">Jenis Mata Kuliah</label>
+                                       <label for="exampleFormControlSelect2">Jenis Mata Kuliah</label>
                                        <select class="form-control" id="jenis_mata_kuliah" name="jenis_mata_kuliah" required oninvalid="this.setCustomValidity('data tidak boleh kosong')" oninput="setCustomValidity('')">
                                           <option value="">--- No Selected ---</option>
                                           <option <?php if ($tb['jenis_mata_kuliah'] == 'Teori') : ?> selected="selected" <?php endif; ?>>Teori</option>
