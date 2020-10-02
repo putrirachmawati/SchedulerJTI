@@ -34,9 +34,9 @@
 
                         <div class="form-group">
                             <label for="exampleFormControlSelect1">Dosen</label>
-                            <select class="form-control" name="id_prodi" id="id_prodi" required oninvalid="this.setCustomValidity('data tidak boleh kosong')" oninput="setCustomValidity('')">
+                            <select class="form-control" name="id_dosen" id="id_dosen" required oninvalid="this.setCustomValidity('data tidak boleh kosong')" oninput="setCustomValidity('')">
                                 <option value="">--- No Selected ---</option>
-                                <?php foreach ($dosen as $dosen) : ?>
+                                <?php foreach ($dos as $dosen) : ?>
                                     <option value="<?php echo $dosen['id_dosen']; ?>">
                                         <?php echo $dosen['nama_dosen']; ?>
                                     </option>
@@ -58,7 +58,7 @@
                             <label for="exampleFormControlSelect1">Program Studi</label>
                             <select class="form-control" name="id_prodi" id="id_prodi" required oninvalid="this.setCustomValidity('data tidak boleh kosong')" oninput="setCustomValidity('')">
                                 <option value="">--- No Selected ---</option>
-                                <?php foreach ($prodi as $prodi) : ?>
+                                <?php foreach ($prod as $prodi) : ?>
                                     <option value="<?php echo $prodi['id_prodi']; ?>">
                                         <?php echo $prodi['nama_prodi']; ?>
                                     </option>
@@ -69,7 +69,7 @@
                             <label for="exampleFormControlSelect1">Semester</label>
                             <select class="form-control" name="id_semester" id="id_semester" required oninvalid="this.setCustomValidity('data tidak boleh kosong')" oninput="setCustomValidity('')">
                                 <option value="">--- No Selected ---</option>
-                                <?php foreach ($semester as $semester) : ?>
+                                <?php foreach ($sem as $semester) : ?>
                                     <option value="<?php echo $semester['id_semester']; ?>">
                                         <?php echo $semester['nama_semester']; ?>
                                     </option>
@@ -80,7 +80,7 @@
                             <label for="exampleFormControlSelect1">Golongan</label>
                             <select class="form-control" name="id_golongan" id="id_golongan" required oninvalid="this.setCustomValidity('data tidak boleh kosong')" oninput="setCustomValidity('')">
                                 <option value="">--- No Selected ---</option>
-                                <?php foreach ($golongan as $golongan) : ?>
+                                <?php foreach ($gol as $golongan) : ?>
                                     <option value="<?php echo $golongan['id_golongan']; ?>">
                                         <?php echo $golongan['nama_golongan']; ?>
                                     </option>
@@ -130,10 +130,10 @@
 
                             <!-- Tombol -->
                             <!-- Edit -->
-                            <a href="" class=" badge badge-success" data-toggle="modal" data-target="#exampleModal2<?= $tb['id_mata_kuliah']; ?>">edit</a> |
+                            <a href="" class=" badge badge-success" data-toggle="modal" data-target="#exampleModal2<?= $tb['id_pengampu']; ?>">edit</a> |
 
                             <!-- Modal edit -->
-                            <div class="modal fade" id="exampleModal2<?= $tb['id_mata_kuliah']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="exampleModal2<?= $tb['id_pengampu']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-lg">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -144,50 +144,70 @@
                                         </div>
 
                                         <div class="modal-body">
-                                            <form action="<?= base_url('MataKuliah/edit_mata_kuliah/'); ?><?= $tb['id_mata_kuliah']; ?>" method="post">
+                                            <form action="<?= base_url('Pengampu/edit_pengampu/'); ?><?= $tb['id_pengampu']; ?>" method="post">
                                                 <!-- Form -->
                                                 <div class="form-group">
-                                                    <label for="exampleFormControlInput2">Id Mata Kuliah</label>
-                                                    <input type="text" class="form-control" class="form-control" id="id_mata_kuliah" name="id_mata_kuliah" placeholder="<?= $tb['id_mata_kuliah']; ?>" readonly>
+                                                    <label for="exampleFormControlInput2">Id Pengampu</label>
+                                                    <input type="text" class="form-control" class="form-control" id="id_pengampu" name="id_pengampu" placeholder="<?= $tb['id_pengampu']; ?>" readonly>
                                                 </div>
+
                                                 <div class="form-group">
-                                                    <label for="exampleFormControlSelect1">Prodi</label>
-                                                    <select class="form-control" name="id_prodi" id="id_prodi" required oninvalid="this.setCustomValidity('data tidak boleh kosong')" oninput="setCustomValidity('')">
+                                                    <label for="exampleFormControlSelect2">Dosen</label>
+                                                    <select class="form-control" name="id_dosen" id="id_dosen" required oninvalid="this.setCustomValidity('data tidak boleh kosong')" oninput="setCustomValidity('')">
                                                         <option value="">--- No Selected ---</option>
-                                                        <?php foreach ($prodi as $row) : ?>
-                                                            <option value="<?php echo $row['id_prodi']; ?>" <?php if ($row['id_prodi'] == $tb['id_prodi']) : ?> selected="selected" <?php endif; ?>>
-                                                                <?php echo $row['nama_prodi']; ?>
+                                                        <?php foreach ($dos as $dos) : ?>
+                                                            <option value="<?php echo $dos['id_dosen']; ?>" <?php if ($dos['id_dosen'] == $tb['id_dosen']) : ?> selected="selected" <?php endif; ?>>
+                                                                <?php echo $dos['nama_dosen']; ?>
                                                             </option>
                                                         <?php endforeach; ?>
                                                     </select>
                                                 </div>
+
                                                 <div class="form-group">
-                                                    <label for="exampleFormControlInput2">Kode Mata Kuliah</label>
-                                                    <input type="text" class="form-control" class="form-control" id="kode_mata_kuliah" name="kode_mata_kuliah" value="<?= $tb['kode_mata_kuliah']; ?>" required oninvalid="this.setCustomValidity('data tidak boleh kosong')" oninput="setCustomValidity('')">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="exampleFormControlInput2">Nama Mata Kuliah</label>
-                                                    <input type="text" class="form-control" class="form-control" id="nama_mata_kuliah" name="nama_mata_kuliah" value="<?= $tb['nama_mata_kuliah']; ?>" required oninvalid="this.setCustomValidity('data tidak boleh kosong')" oninput="setCustomValidity('')">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="exampleFormControlSelect1">Semester</label>
-                                                    <select class="form-control" id="semester" name="semester" required oninvalid="this.setCustomValidity('data tidak boleh kosong')" oninput="setCustomValidity('')">
+                                                    <label for="exampleFormControlSelect2">Mata Kuliah</label>
+                                                    <select class="form-control" name="id_mata_kuliah" id="id_mata_kuliah" required oninvalid="this.setCustomValidity('data tidak boleh kosong')" oninput="setCustomValidity('')">
                                                         <option value="">--- No Selected ---</option>
-                                                        <option <?php if ($tb['semester'] == 'Semester 1') : ?> selected="selected" <?php endif; ?>>Semester 1</option>
-                                                        <option <?php if ($tb['semester'] == 'Semester 2') : ?> selected="selected" <?php endif; ?>>Semester 2</option>
-                                                        <option <?php if ($tb['semester'] == 'Semester 3') : ?> selected="selected" <?php endif; ?>>Semester 3</option>
-                                                        <option <?php if ($tb['semester'] == 'Semester 4') : ?> selected="selected" <?php endif; ?>>Semester 4</option>
-                                                        <option <?php if ($tb['semester'] == 'Semester 5') : ?> selected="selected" <?php endif; ?>>Semester 5</option>
-                                                        <option <?php if ($tb['semester'] == 'Semester 6') : ?> selected="selected" <?php endif; ?>>Semester 6</option>
+                                                        <?php foreach ($MataKuliah as $row) : ?>
+                                                            <option value="<?php echo $row['id_mata_kuliah']; ?>" <?php if ($row['id_mata_kuliah'] == $tb['id_mata_kuliah']) : ?> selected="selected" <?php endif; ?>>
+                                                                <?php echo $row['nama_mata_kuliah']; ?>
+                                                            </option>
+                                                        <?php endforeach; ?>
                                                     </select>
                                                 </div>
+
                                                 <div class="form-group">
-                                                    <label for="exampleFormControlSelect1">Jenis Mata Kuliah</label>
-                                                    <select class="form-control" id="jenis_mata_kuliah" name="jenis_mata_kuliah" required oninvalid="this.setCustomValidity('data tidak boleh kosong')" oninput="setCustomValidity('')">
+                                                    <label for="exampleFormControlSelect2">Program Studi</label>
+                                                    <select class="form-control" name="id_prodi" id="id_prodi" required oninvalid="this.setCustomValidity('data tidak boleh kosong')" oninput="setCustomValidity('')">
                                                         <option value="">--- No Selected ---</option>
-                                                        <option <?php if ($tb['jenis_mata_kuliah'] == 'Teori') : ?> selected="selected" <?php endif; ?>>Teori</option>
-                                                        <option <?php if ($tb['jenis_mata_kuliah'] == 'Workshop') : ?> selected="selected" <?php endif; ?>>Workshop</option>
-                                                        <option <?php if ($tb['jenis_mata_kuliah'] == 'Praktikum') : ?> selected="selected" <?php endif; ?>>Praktikum</option>
+                                                        <?php foreach ($prod as $prod) : ?>
+                                                            <option value="<?php echo $prod['id_prodi']; ?>" <?php if ($prod['id_prodi'] == $tb['id_prodi']) : ?> selected="selected" <?php endif; ?>>
+                                                                <?php echo $prod['nama_prodi']; ?>
+                                                            </option>
+                                                        <?php endforeach; ?>
+                                                    </select>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="exampleFormControlSelect2">Semester</label>
+                                                    <select class="form-control" name="id_semester" id="id_semester" required oninvalid="this.setCustomValidity('data tidak boleh kosong')" oninput="setCustomValidity('')">
+                                                        <option value="">--- No Selected ---</option>
+                                                        <?php foreach ($sem as $sem) : ?>
+                                                            <option value="<?php echo $sem['id_semester']; ?>" <?php if ($sem['id_semester'] == $tb['id_semester']) : ?> selected="selected" <?php endif; ?>>
+                                                                <?php echo $sem['nama_semester']; ?>
+                                                            </option>
+                                                        <?php endforeach; ?>
+                                                    </select>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="exampleFormControlSelect2">Golongan</label>
+                                                    <select class="form-control" name="id_golongan" id="id_golongan" required oninvalid="this.setCustomValidity('data tidak boleh kosong')" oninput="setCustomValidity('')">
+                                                        <option value="">--- No Selected ---</option>
+                                                        <?php foreach ($gol as $gol) : ?>
+                                                            <option value="<?php echo $gol['id_golongan']; ?>" <?php if ($gol['id_golongan'] == $tb['id_golongan']) : ?> selected="selected" <?php endif; ?>>
+                                                                <?php echo $gol['nama_golongan']; ?>
+                                                            </option>
+                                                        <?php endforeach; ?>
                                                     </select>
                                                 </div>
 
@@ -203,7 +223,7 @@
                             <!-- Akhir Modal Edit -->
 
                             <!-- Delete -->
-                            <a href="<?= base_url('MataKuliah/delete_mata_kuliah/'); ?><?= $tb['id_mata_kuliah']; ?>" class="badge badge-danger" onclick="return confirm('Your data will be delete. Are you sure to continue?');">delete</a>
+                            <a href="<?= base_url('Pengampu/delete_pengampu/'); ?><?= $tb['id_pengampu']; ?>" class="badge badge-danger" onclick="return confirm('Your data will be delete. Are you sure to continue?');">delete</a>
 
                         </td>
                     </tr>

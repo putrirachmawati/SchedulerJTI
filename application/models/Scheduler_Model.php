@@ -12,7 +12,7 @@ class Scheduler_Model extends CI_Model
     {
         $data = [
             "nama_dosen" => $this->input->post('nama_dosen', true),
-            "nip" => $this->input->post('nip', true),
+            "nip" => $this->input->post('nip', true)
         ];
         $this->db->insert('tb_dosen', $data);
     }
@@ -44,13 +44,32 @@ class Scheduler_Model extends CI_Model
     public function insertPengampu()
     {
         $data = [
-            "id_dosen" => $this->input->post('id_dosen', true),
-            "id_mata_kuliah" => $this->input->post('id_mata_kuliah', true),
-            "id_prodi" => $this->input->post('id_prodi', true),
-            "id_semester" => $this->input->post('id_semester', true),
-            "id_golongan" => $this->input->post('id_golongan', true)
+            "id_dosen" => $this->input->post('id_dosen'),
+            "id_mata_kuliah" => $this->input->post('id_mata_kuliah'),
+            "id_prodi" => $this->input->post('id_prodi'),
+            "id_semester" => $this->input->post('id_semester'),
+            "id_golongan" => $this->input->post('id_golongan'),
         ];
-        $this->db->insert('tb_pengampu');
+        $this->db->insert('tb_pengampu', $data);
+    }
+
+    public function editPengampu($id_pengampu)
+    {
+        $data = [
+            "id_dosen" => $this->input->post('id_dosen'),
+            "id_mata_kuliah" => $this->input->post('id_mata_kuliah'),
+            "id_prodi" => $this->input->post('id_prodi'),
+            "id_semester" => $this->input->post('id_semester'),
+            "id_golongan" => $this->input->post('id_golongan')
+        ];
+        $this->db->where('id_pengampu', $id_pengampu);
+        $this->db->update('tb_pengampu', $data);
+    }
+
+    public function deletePengampu($id_pengampu)
+    {
+        $this->db->where('id_pengampu', $id_pengampu);
+        $this->db->delete('tb_pengampu');
     }
 
 
@@ -159,6 +178,31 @@ class Scheduler_Model extends CI_Model
         return $this->db->get('tb_semester')->result_array();
     }
 
+    public function insertSemester()
+    {
+        $data = [
+            "id_tahun_akademik" => $this->input->post('id_tahun_akademik', true),
+            "nama_semester" => $this->input->post('nama_semester', true)
+        ];
+        $this->db->insert('tb_semester', $data);
+    }
+
+    public function editSemester($id_semester)
+    {
+        $data = [
+            "id_tahun_akademik" => $this->input->post('id_tahun_akademik', true),
+            "nama_semester" => $this->input->post('nama_semester', true)
+        ];
+        $this->db->where('id_semester', $id_semester);
+        $this->db->update('tb_semester', $data);
+    }
+
+    public function deleteSemester($id_semester)
+    {
+        $this->db->where('id_semester', $id_semester);
+        $this->db->delete('tb_semester');
+    }
+
 
     //------------------------------ RUANG ------------------------------
     public function getAllRuang()
@@ -171,7 +215,7 @@ class Scheduler_Model extends CI_Model
         $data = [
             "nama_ruang" => $this->input->post('nama_ruang', true),
             "kapasitas" => $this->input->post('kapasitas', true),
-            "jenis_ruang" => $this->input->post('jenis_ruang', true),
+            "jenis_ruang" => $this->input->post('jenis_ruang', true)
         ];
         $this->db->insert('tb_ruang', $data);
     }
